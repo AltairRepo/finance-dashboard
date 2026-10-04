@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amazon Finance Dashboard</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+    color: #1a1a1a;
+    background: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e8e8e8; background: #161616; }
+    code, .box { background: #242424; }
+    a { color: #7fb3ff; }
+  }
+  h1 { font-size: 1.9rem; margin-bottom: 0.25rem; }
+  .tagline { color: #666; margin-top: 0; }
+  @media (prefers-color-scheme: dark) { .tagline { color: #aaa; } }
+  h2 { font-size: 1.25rem; margin-top: 2.25rem; }
+  code {
+    background: #f4f4f4;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .box {
+    background: #f4f4f4;
+    border-left: 3px solid #888;
+    padding: 0.9rem 1.1rem;
+    border-radius: 4px;
+    margin: 1.25rem 0;
+  }
+  ul { padding-left: 1.3rem; }
+  li { margin: 0.4rem 0; }
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #ddd;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  @media (prefers-color-scheme: dark) {
+    footer { border-top-color: #333; color: #aaa; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Amazon Finance Dashboard</h1>
+<p class="tagline">A private, locally-run profitability tool for a single Amazon UK wholesale seller.</p>
+
+<div class="box">
+  <strong>This is not a public product.</strong> It is a personal tool, run by
+  its owner on their own computer. There is no hosted service, no sign-up, and
+  no multi-user version. It is not offered for use by anyone else.
+</div>
+
+<h2>What it does</h2>
+<p>
+  It joins actual wholesale purchase costs to actual Amazon sales data so the
+  operator can see real per-product and business-level profit, rather than
+  estimates.
+</p>
+<ul>
+  <li>Reads supplier invoices from a single, specific label in the operator's own Gmail mailbox</li>
+  <li>Extracts purchase quantities, net cost, VAT and unit cost from those invoices</li>
+  <li>Combines that with the operator's own Amazon Selling Partner API data (orders, fees, refunds, shipping charges)</li>
+  <li>Calculates profit, margin and ROI, and displays it on a dashboard that runs only on <code>localhost</code></li>
+</ul>
+
+<h2>Why it requests Gmail access</h2>
+<p>
+  Supplier invoices arrive by email. The application needs to read the messages
+  under one label to obtain the invoice attachments that contain purchase
+  costs. It requests exactly one Google permission:
+</p>
+<div class="box">
+  <code>https://www.googleapis.com/auth/gmail.readonly</code><br>
+  Read-only. The application cannot send, reply, modify, archive, label or
+  delete anything in the mailbox.
+</div>
+
+<h2>Where the data goes</h2>
+<p>
+  Nowhere. Email content, invoices and all derived financial figures are stored
+  in a local database and local files on the operator's own machine. Nothing is
+  uploaded, shared, sold, or transmitted to any third party or to the developer.
+</p>
+
+<h2>Privacy</h2>
+<p>See the <a href="privacy.html">Privacy Policy</a>.</p>
+
+<footer>
+  Personal project. Not affiliated with, endorsed by, or sponsored by Amazon or Google.
+</footer>
+
+</body>
+</html>
